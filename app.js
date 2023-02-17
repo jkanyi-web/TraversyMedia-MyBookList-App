@@ -13,14 +13,12 @@ class Book {
 class UI {
   static displayBooks() {
     const books = Store.getBooks();
-
     books.forEach((book) => UI.addBookToList(book));
   }
 
   static addBookToList(book) {
     const list = document.querySelector('#book-list');
     const row = document.createElement('tr');
-
     row.innerHTML = `
       <td>${book.title}</td>
       <td>${book.author}</td>
@@ -44,8 +42,7 @@ class UI {
     const container = document.querySelector('.container');
     const form = document.querySelector('#book-form');
     container.insertBefore(div, form);
-
-    // Vanish in 3 seconds
+    // Vanish in 2 seconds
     setTimeout(() => document.querySelector('.alert').remove(), 2000);
   }
 
@@ -65,7 +62,6 @@ class Store {
     } else {
       books = JSON.parse(localStorage.getItem('books'));
     }
-
     return books;
   }
 
@@ -82,7 +78,6 @@ class Store {
         books.splice(index, 1);
       }
     });
-
     localStorage.setItem('books', JSON.stringify(books));
   }
 }
